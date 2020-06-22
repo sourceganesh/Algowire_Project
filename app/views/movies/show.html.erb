@@ -1,0 +1,57 @@
+<link href='https://fonts.googleapis.com/css?family=Advent Pro' rel='stylesheet'>
+<style>
+  #login{
+    width:60%;
+    height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    background-color:white;
+  }
+  #workblock{
+    width:100%;
+    height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    @fontface{
+      font-family: font_title;
+      src: url(font.ttf);
+    }
+  }
+</style>
+
+<div id="workblock">
+<div id="login">
+<div style="color:black;">
+<p>
+  <strong style="font-family: 'Advent Pro'; font-size:30px;"><%= @movie.title %></strong>
+</p>
+<div style="padding:10px;" class="shadow p-3 mb-5 bg-white rounded">
+<%= image_tag(@movie.image,style:"height:400px;")%>
+</div>
+
+<p>
+  <%= @movie.body %>
+</p>
+
+<div style="width:100%; display: flex; justify-content:flex-end;">
+  <p style="">
+    <i>Posted By: <%= User.where(id: @movie.user_id).first.email %></i>
+  </p>
+</div>
+
+<h2> <%= @movie.comments.count %> Comments</h2>
+<%= render @movie.comments %>
+
+<h3>Add a Comment</h3>
+<%= render 'comments/form' %>
+
+<%= link_to 'Edit', edit_movie_path(@movie) %> |
+<%= link_to 'Back', movies_path %>
+
+</div>
+</div>
+</div>

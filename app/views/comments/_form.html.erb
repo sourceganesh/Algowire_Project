@@ -1,0 +1,9 @@
+<%= form_for([@movie,@movie.comments.build]) do |f| %>
+
+    <div class="field">
+        <%= f.label :body %> <br>
+        <%= f.text_field :body %>
+    </div>
+
+<%= f.submit %>
+<% end%>
