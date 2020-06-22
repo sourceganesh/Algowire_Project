@@ -1,9 +1,18 @@
-<%= comment.user_id %> <br>
-<%= comment.body %> <br>
-<%= time_ago_in_words(comment.created_at) %> <br>
 
+<div style="border: 2px solid rgb(0,0,0,0.25); border-radius: 10px; padding-top: 10px; padding-left: 30px;">
+=><%= User.find(comment.user_id).email %> <br>
+<div style="left:50px; position:relative;"><%= comment.body %></div>
+
+<div class="row" >
+<div class="col-10" style="width:100%; display: flex; justify-content:flex-end;">
+<%= time_ago_in_words(comment.created_at) %> <br>
+</div>
+<div class="col-1" style="width:100%; display: flex; justify-content:flex-end; margin-right: 10px;">
 <% if current_user %>
     <% if comment.user_id == current_user.id %>
-        <%= link_to 'Delete', [comment.movie,comment], method: :delete, data: {confirm: "Are you sure"}%></p> 
+        |<%= link_to 'Delete', [comment.movie,comment], method: :delete, data: {confirm: "Are you sure"}%></p> 
     <% end %>
 <% end %>
+</div>
+</div>
+</div>

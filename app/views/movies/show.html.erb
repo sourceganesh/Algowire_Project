@@ -15,19 +15,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
-    @fontface{
-      font-family: font_title;
-      src: url(font.ttf);
-    }
+    margin-top: 25px;
   }
 </style>
+
+<%= link_to 'Back', movies_path , :style => "position: fixed; right:30px;", :class=>'btn btn-primary' %>
 
 <div id="workblock">
 <div id="login">
 <div style="color:black;">
 <p>
-  <strong style="font-family: 'Advent Pro'; font-size:30px;"><%= @movie.title %></strong>
+  <strong style="font-size:30px;"><%= @movie.title %></strong>
 </p>
 <div style="padding:10px;" class="shadow p-3 mb-5 bg-white rounded">
 <%= image_tag(@movie.image,style:"height:400px;")%>
@@ -43,14 +41,12 @@
   </p>
 </div>
 
-<h2> <%= @movie.comments.count %> Comments</h2>
+<p><b><i><%= @movie.comments.count %> Comments</i></b></p>
 <%= render @movie.comments %>
 
-<h3>Add a Comment</h3>
+<h5>Add a Comment</h5>
 <%= render 'comments/form' %>
-
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
+<br>
 
 </div>
 </div>
